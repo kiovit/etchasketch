@@ -1,5 +1,6 @@
 .html{
-    min-height: 100svh;
+    min-height: 100vh;
+   
 }
 
 body{
@@ -7,7 +8,7 @@ body{
 }
 .container{
     display: grid;
-    grid-template-columns: repeat(300,1fr); 
+    grid-template-columns: repeat(16,1fr); 
     width: 60%;
     margin: 0 auto;
   }
@@ -16,6 +17,7 @@ body{
     width: 100%;
     padding-bottom: 100%;
     background-color: rgb(255, 221, 0);
-    
+    border-style: solid;
+    border-color: red;
 }
 
