@@ -1,28 +1,28 @@
 .html{
-    min-height: 100svh;
-   
+    min-height: 100svh;   
+}
+
+body{
+    background-color: rgb(9, 9, 9);
+    font-family: 'Roboto', sans-serif;
+    color: rgb(255, 0, 212);
 }
 
 h1{
-    color: white;
-    font-family:Arial, Helvetica, sans-serif;
     font-weight: 500;
-    font-size: 5rem;
+    font-size: 3rem;
     margin:0;
     display:flex;
     justify-content: center;
-
-}
-body{
-    background-color: rgb(9, 9, 9);
 }
 .container{
     display: grid;
     grid-template-columns: repeat(16,1fr); 
     width: 60%;
-    margin: 0 auto;
+    margin: auto;
+    margin-top: 1rem;
     border-style: solid;
-    border-color: blue;
+    border-color: rgb(255, 0, 212);
   }
 
 .square{   
