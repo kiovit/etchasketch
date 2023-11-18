@@ -34,13 +34,12 @@ function getUserInput() {
 
 let userInput = getUserInput();
 
-let userInputPower = (userInput*userInput);
 const container = document.querySelector(".container");
 container.style.gridTemplateColumns = 'repeat(' + userInput + ', 1fr)';
 
 //Function that creates the grid
 
-for (let i = 1; i <= userInputPower; i++){
+for (let i = 1; i <= userInput*userInput; i++){
     const div = document.createElement("div");
     div.className = "square";
     container.appendChild(div)+i; 
