@@ -8,6 +8,11 @@ function handleMouseOver() {
       this.style.backgroundColor = "blue";
     }
 }
+
+// Mobile functions
+function handleTouchStart() {
+  this.style.backgroundColor = "blue"}
+
 let mousedown = false;
 
 // We need to get the number of suqares the user wants
@@ -43,6 +48,8 @@ for (let i = 1; i <= userInputPower; i++){
     div.addEventListener("mousedown", handleMouseDown);
 
     div.addEventListener("mouseover", handleMouseOver);
+    // Mobile event listener
+    div.addEventListener('touchstart', handleTouchStart);
 
     document.addEventListener("mouseup", function() {
       mousedown = false;
