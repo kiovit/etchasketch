@@ -1,5 +1,4 @@
-const container = document.querySelector(".container");
-
+// Define the logic for coloring a square
 function handleMouseDown() {
     this.style.backgroundColor = "blue";
   }
@@ -11,9 +10,32 @@ function handleMouseOver() {
 }
 let mousedown = false;
 
-//Create 16*16 grid of divs
+// We need to get the number of suqares the user wants
 
-for (let i = 1; i <= 16*16; i++){
+function getUserInput() {
+  let userPrompt;
+  do {
+    userPrompt = prompt("How many squares per side? (20-100)");
+    if (userPrompt === null) {
+      return null;
+    }
+    userPrompt = parseInt(userPrompt);
+    if (isNaN(userPrompt) || userPrompt < 20 || userPrompt > 100) {
+      alert("Please input a number between 20-100");
+    }
+  } while (isNaN(userPrompt) || userPrompt < 20 || userPrompt > 100);
+  return userPrompt;
+}
+
+let userInput = getUserInput();
+
+let userInputPower = (userInput*userInput);
+const container = document.querySelector(".container");
+container.style.gridTemplateColumns = 'repeat(' + userInput + ', 1fr)';
+
+//Function that creates the grid
+
+for (let i = 1; i <= userInputPower; i++){
     const div = document.createElement("div");
     div.className = "square";
     container.appendChild(div)+i; 
