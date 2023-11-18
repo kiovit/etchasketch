@@ -10,7 +10,7 @@ function handleMouseOver() {
 }
 
 // Mobile functions
-function handleTouchStart() {
+function handleTouchMove() {
   this.style.backgroundColor = "blue"}
 
 let mousedown = false;
@@ -42,13 +42,14 @@ container.style.gridTemplateColumns = 'repeat(' + userInput + ', 1fr)';
 for (let i = 1; i <= userInput*userInput; i++){
     const div = document.createElement("div");
     div.className = "square";
-    container.appendChild(div)+i; 
+    container.appendChild(div); 
 
     div.addEventListener("mousedown", handleMouseDown);
 
     div.addEventListener("mouseover", handleMouseOver);
     // Mobile event listener
-    div.addEventListener('touchstart', handleTouchStart);
+    div.addEventListener("touchmove", handleTouchMove);
+
 
     document.addEventListener("mouseup", function() {
       mousedown = false;
