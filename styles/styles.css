@@ -3,7 +3,7 @@
 }
 
 body{
-    display:block;
+    display:flex;
     justify-content: center;
     background-color: black;
     font-family: 'Roboto', sans-serif;
@@ -19,7 +19,8 @@ h1{
 }
 .container{
     display: grid;
-    max-width: 960px;
+    width: 500px;
+    height: 500px;
     margin: auto;
     margin-top: 1rem;
     border-style: solid;
@@ -45,7 +46,7 @@ h1{
     gap: 1rem;
     font-size: 1.5em;
     font-weight: 300;
-    margin-left: 4rem;
+    margin-left: 2rem;
 }
 .switch {
     position: relative;

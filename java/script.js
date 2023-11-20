@@ -11,12 +11,15 @@ reset.addEventListener("click", function() {
 let previousUserInput = userInput;
 let mousedown = false;
 
+function resetCanvas() {
+  clearGrid()
+  createGrid(previousUserInput);
+}
 
-  function resetCanvas() {
-    container.innerHTML = '';
-    mousedown = false; 
-    createGrid(previousUserInput);
-  }
+function clearGrid() {
+  container.innerHTML = '';
+}
+
 
   // Define the logic for coloring a square
   function handleMouseDown() {
