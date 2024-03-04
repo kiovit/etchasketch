@@ -1,66 +1,72 @@
+// Constants for elements and initializations
 const body = document.querySelector("body");
-let container = document.querySelector(".container");
-let userInput = getUserInput();
+const container = document.querySelector(".container");
 const toggleSwitch = document.getElementById('toggleSwitch');
-// Creates button to clear canvas
-let reset = document.querySelector(".reset");
-reset.addEventListener("click", function() {
-    resetCanvas();
-  });
+const resetButton = document.querySelector(".reset");
 
-let previousUserInput = userInput;
+// Variable to track if the mouse button is pressed
 let mousedown = false;
 
+// Add event listener for mouseup
+document.addEventListener("mouseup", () => {
+  mousedown = false;
+});
+
+// Add event listener for mousedown
+document.addEventListener("mousedown", () => {
+  mousedown = true;
+});
+
+// Add event listener for reset button click
+resetButton.addEventListener("click", resetCanvas);
+
+// Function to reset the canvas
 function resetCanvas() {
-  clearGrid()
-  createGrid(previousUserInput);
+  clearGrid();
+  createGrid(userInput);
 }
 
+// Function to clear the grid
 function clearGrid() {
   container.innerHTML = '';
 }
 
-
-  // Define the logic for coloring a square
-  function handleMouseDown() {
-    if (mousedown && toggleSwitch.checked) {
-      this.style.backgroundColor = getRandomRgb();
-    } else if (mousedown) {
-      this.style.backgroundColor = "blue";
-    }
+// Function to handle mouse down event
+function handleMouseDown() {
+  if (mousedown && toggleSwitch.checked) {
+    this.style.backgroundColor = getRandomRgb();
+  } else if (mousedown) {
+    this.style.backgroundColor = "blue";
   }
+}
 
-  function handleMouseOver() {
-    if (toggleSwitch.checked && mousedown) {
-      this.style.backgroundColor = getRandomRgb();
-    } else if (mousedown) {
-      this.style.backgroundColor = "blue";
-    }
+// Function to handle mouse over event
+function handleMouseOver() {
+  if (mousedown && toggleSwitch.checked) {
+    this.style.backgroundColor = getRandomRgb();
+  } else if (mousedown) {
+    this.style.backgroundColor = "blue";
   }
+}
 
- // We get the number of suqares the user wants
- 
- function createGrid(userPrompt) {
-  for (let i = 1; i <= userPrompt * userPrompt; i++) {
-    container.style.gridTemplateColumns = 'repeat(' + userPrompt + ', 1fr)';
+// Function to create the grid
+function createGrid(userPrompt) {
+  // Set grid template columns
+  container.style.gridTemplateColumns = `repeat(${userPrompt}, 1fr)`;
+
+  // Create grid squares
+  for (let i = 0; i < userPrompt * userPrompt; i++) {
     const div = document.createElement("div");
     div.className = "square";
     container.appendChild(div);
     div.addEventListener("mousedown", handleMouseDown);
     div.addEventListener("mouseover", handleMouseOver);
-    document.addEventListener("mouseup", function () {
-    mousedown = false;
-    });
   }
-
-  document.addEventListener("mousedown", function () {
-    mousedown = true;
-  });
 }
 
+// Function to get user input for grid size
 function getUserInput() {
   let userPrompt;
-  
   do {
     userPrompt = prompt("How many squares per side? (20-100)");
     if (userPrompt === null) {
@@ -73,16 +79,16 @@ function getUserInput() {
   } while (isNaN(userPrompt) || userPrompt < 20 || userPrompt > 100);
 
   createGrid(userPrompt);
-
   return userPrompt;
- }
+}
 
- //Function that creates random RGB
-  function getRandomRgb() {
-    var num = Math.round(0xffffff * Math.random());
-    var r = num >> 16;
-    var g = num >> 8 & 255;
-    var b = num & 255;
-    return 'rgb(' + r + ', ' + g + ', ' + b + ')';
-  }
-  
+// Function to generate random RGB color
+function getRandomRgb() {
+  const r = Math.round(Math.random() * 255);
+  const g = Math.round(Math.random() * 255);
+  const b = Math.round(Math.random() * 255);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+// Get initial user input and create grid
+const userInput = getUserInput();

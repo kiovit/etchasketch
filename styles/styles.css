@@ -1,10 +1,12 @@
-.html{
+html{
     min-height: 100svh;   
 }
 
 body{
     display:flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
     background-color: black;
     font-family: 'Roboto', sans-serif;
     color: rgb(255, 0, 212);
@@ -19,8 +21,8 @@ h1{
 }
 .container{
     display: grid;
-    width: 500px;
-    height: 500px;
+    height: 30rem;
+    width: 30rem;
     margin: auto;
     margin-top: 1rem;
     border-style: solid;
@@ -28,11 +30,7 @@ h1{
     border-color: rgb(255, 0, 212);
     user-select: none;
   }
-.container2{
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-}
+
 .square{   
     width: 100%;
     padding-bottom: 100%;
